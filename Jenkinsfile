@@ -25,7 +25,14 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
+        stage('Deploy - Staging') {
+            echo "do magic to deploy the jar to staging"
+        }
+        stage('Deploy - Production') {
+            input {
+                message "Deploy to production?"
+                ok "Yes, go go go!."
+            }
             steps {
                 sh 'cp target/test-0.0.1-SNAPSHOT.jar /var/jenkins_home/release'
             }
