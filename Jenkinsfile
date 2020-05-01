@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        PASSWORD = credentials('important_password')
+    }
+
     tools {
         maven "Maven"
     }
@@ -12,6 +16,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                echo "Job Name: ${env.JOB_NAME}"
+                echo "Username: ${env.user_name}"
+                echo "Password ${PASSWORD}"
+
                 sh 'mvn -B -DskipTests clean package'
             }
         }
