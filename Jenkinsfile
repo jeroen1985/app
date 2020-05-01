@@ -26,7 +26,9 @@ pipeline {
             }
         }
         stage('Deploy - Staging') {
-            echo "do magic to deploy the jar to staging"
+            steps {
+                echo "do magic to deploy the jar to staging"
+            }
         }
         stage('Deploy - Production') {
             input {
