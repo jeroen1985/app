@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                sh 'cp target/test-0.0.1-SNAPSHOT.jar /var/jenkins_home/release'
             }
         }
     }
